@@ -1,0 +1,9 @@
+<div> class="container">
+    {% if not recipe%}
+       <h1>Sorry! Dont have that Recipe!</h1>
+    {% else %}
+        <h2>{{ recipe.title }}</h2>
+        <h4>{{ recipe.author.name }}</h4>
+        <p>{{ recipe.body }}</p>
+    {% endif %}
+</div>

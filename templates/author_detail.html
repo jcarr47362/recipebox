@@ -1,0 +1,8 @@
+<div> class="container">
+    {{% if not author %}}
+    <h1>Sorry! Author not listed!</h1>
+    {% else %}
+    <h2>{{author.name}}</h2>
+    <h4>{{author.body}}</h4>
+    {% endif %}
+</div>
