@@ -6,6 +6,7 @@ from django.utils import timezone
 
 class Author(models.Model):
     name = models.CharField(max_length=80)
+    bio = models.TextField(max_length=80)
 
     def __str__(self):
         return self.name
@@ -13,9 +14,10 @@ class Author(models.Model):
 
 class Recipe(models.Model):
     title = models.CharField(max_length=50)
-    body = models.TextField()
-    author_date = models.DateTimeField(default=timezone.now)
+    description = models.TextField()
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    time_required = models.CharField(max_length=50)
+    instructions = models.TextField()
 
     def __str__(self):
         return f"{self.title} - {self.author.name}"
