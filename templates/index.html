@@ -1,5 +1,6 @@
 <div class="container">
     <h1>HELLO, {{ welcome_name }}!</h1>
+    <h2>Am I authenticated? {{ user.is_authenticated }}</h2>
 
     <ul>
         {% for recipe in recipes %}
