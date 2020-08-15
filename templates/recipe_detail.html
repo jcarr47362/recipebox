@@ -1,9 +1,10 @@
-<div> class="container">
-    {% if not recipe%}
-       <h1>Sorry! Dont have that Recipe!</h1>
+<div class="container">
+    {% if not recipe %}
+        <h1>Sorry! Dont have that Recipe!</h1>
     {% else %}
         <h2>{{ recipe.title }}</h2>
-        <h4>{{ recipe.author.name }}</h4>
-        <p>{{ recipe.body }}</p>
+        <h4><a href="/author/{{recipe.author.id}}/">{{ recipe.author.name }}</a></h4>
+        <p>{{ recipe.instructions }}</p>
+        <p>{{ recipe.description }} | {{recipe.time_required}}</p>
     {% endif %}
 </div>
