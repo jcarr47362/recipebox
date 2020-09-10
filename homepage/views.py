@@ -64,6 +64,32 @@ def add_recipe(request):
     form = AddRecipeForm()
     return render(request, "generic_form.html", {'form': form})
 
+@login_required
+def edit_recipe_view(request, recipe_id):
+    edit_recipe = Recipe.objects.get(id=recipe_id)
+    if request.method == "POST":
+        form = AddRecipeForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            edit_recipe.title = data['title']
+            edit_recipe.description = data['description']
+            edit_recipe.time_required = data['time_required']
+            edit_recipe.instructions = data['instructions']
+            edit_recipe.save()
+        return HttpResponseRedirect(reverse("homepage"))
+
+    data = {
+        "title": edit_recipe.title,
+        "description": edit_recipe.description,
+        "time_required": edit_recipe.time_required,
+        "instructions": edit_recipe.instructions
+    }
+    form = AddRecipeForm(initial=data)
+    return render(request, "generic_form.html", {'form': form})
+
+
+
+
 
 def login_view(request):
     if request.method == "POST":
