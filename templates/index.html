@@ -1,15 +1,23 @@
 <div class="container">
-    <h1>HELLO, {{ welcome_name }}!</h1>
-    <h2>Am I authenticated? {{ user.is_authenticated }}</h2>
+  <h1>HELLO, {{ welcome_name }}!</h1>
+  {% if user.is_authenticated %}
+  <h3>Welcome, {{ request.user }}</h3>
+  <a href="{% url 'logout_view' %}">Logout</a>
+  {% else %}
+  <a href="{% url 'login_view' %}">Login</a>
+  {% endif %}
 
-    <ul>
-        {% for recipe in recipes %}
-        <li>
-            <a href="/recipe/{{ recipe.id }}/">{{ recipe.title }}</a>
-        </li>
-        {%endfor%}
-    </ul>
-    <a href="addauthor/">Add Author</a>
-    <br>
-    <a href="addrecipe/">Add Recipe</a>
+  <ul>
+    {% for recipe in recipes %}
+    <li>
+      <a href="/recipe/{{ recipe.id }}/">{{ recipe.title }}</a>
+    </li>
+    {%endfor%}
+  </ul>
+  <a href="addauthor/">Add Author</a>
+  <br />
+  <a href="addrecipe/">Add Recipe</a>
+
+  {% for message in messages %} <br />
+  <span style="color: red">{{ message }}</span> {% endfor %}
 </div>
