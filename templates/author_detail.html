@@ -3,15 +3,26 @@
   <h1>The author you're looking for doesn't exist!</h1>
   {% else %}
   <h2>{{ author.name }}</h2>
-  <h4>{{ author.bio }}</h4>
+  <div>
+    <h3>Bio:</h3>
+    <p>{{ author.bio }}</p>
+  </div>
+  <h3>All of {{ author.name }}'s Recipes</h3>
   <ul>
-    <h3>All {{ author.name }}'s Recipes</h3>
     {%for recipe in recipes%}
     <li>
       <a href="/recipe/{{ recipe.id }}">{{ recipe.title }}</a>
     </li>
     {%endfor%}
   </ul>
-  <a href="/recipe/{{ recipe.title }}">Favorite Recipes</a>
+
   {% endif %}
+  <h3>{{ author.name }}'s Favorite Recipes</h3>
+  <ul>
+    {% for favs in author.favorite_recipes.all %}
+    <li>
+      <a href="/recipe/{{ favs.id }}/">{{ favs.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
 </div>

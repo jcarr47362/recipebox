@@ -16,13 +16,6 @@ def index(request):
     return render(request, "index.html", {"recipes": my_recipes, "welcome_name": "Rockstars"})
 
 
-def fav_recipes_view(request, user_name):
-    requesting_user = request.user
-    fav_recipes = Recipe.objects.filter(username=user_name).first()
-    requesting_user.favorite_recipes.add()
-    return render(request, "favorite_recipes.html", {"fav_recipes": fav_recipes})
-
-
 def add_favorite_recipe_view(request, recipe_id):
     fav_recipe = Recipe.objects.get(id=recipe_id)
     logged_in_user = Author.objects.get(user=request.user)

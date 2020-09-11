@@ -6,18 +6,17 @@
   {% else %}
   <a href="{% url 'login_view' %}">Login</a>
   {% endif %}
-
+  <a href="addauthor/">Add Author</a>
+  <a href="addrecipe/">Add Recipe</a>
+  <h3>All Recipes</h3>
   <ul>
     {% for recipe in recipes %}
     <li>
-      <a href="/recipe/{{ recipe.id }}/">{{ recipe.title }}</a>
+      <a href="/recipe/{{ recipe.id }}/">{{ recipe.title }}</a> -
+      <a href="/author/{{recipe.author.id}}/">{{recipe.author}}</a>
     </li>
     {%endfor%}
   </ul>
-  <a href="addauthor/">Add Author</a>
-  <br />
-  <a href="addrecipe/">Add Recipe</a>
-
   {% for message in messages %} <br />
   <span style="color: red">{{ message }}</span> {% endfor %}
 </div>
