@@ -1,15 +1,28 @@
-<div class = 'container'>
-    {% if not author %}
-    <h1>The author you're looking for doesn't exist!</h1>
-    {% else %}
-        <h2>{{ author.name }}</h2>
-        <h4>{{ author.bio }}</h4>
-        <ul>
-            {%for recipe in author_recipe%}
-                <li>
-                    <a href = '/recipe/{{ recipe.id }}'>{{ recipe.title }}</a>
-                </li>
-            {%endfor%}
-        </ul>
-    {% endif %}
-    </div>
+<div class="container">
+  {% if not author %}
+  <h1>The author you're looking for doesn't exist!</h1>
+  {% else %}
+  <h2>{{ author.name }}</h2>
+  <div>
+    <h3>Bio:</h3>
+    <p>{{ author.bio }}</p>
+  </div>
+  <h3>All of {{ author.name }}'s Recipes</h3>
+  <ul>
+    {%for recipe in recipes%}
+    <li>
+      <a href="/recipe/{{ recipe.id }}">{{ recipe.title }}</a>
+    </li>
+    {%endfor%}
+  </ul>
+
+  {% endif %}
+  <h3>{{ author.name }}'s Favorite Recipes</h3>
+  <ul>
+    {% for favs in author.favorite_recipes.all %}
+    <li>
+      <a href="/recipe/{{ favs.id }}/">{{ favs.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
