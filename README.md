@@ -1,7 +1,7 @@
-admin (staff user)
-u: kevin
-p: kevin
+admin
+u: admin
+p: admin
 
 non-staff
-u: doe
+u: joe
 p: password2020

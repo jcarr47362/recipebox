@@ -1,9 +1,0 @@
-RUBRIC - the logged in user can edit their recipes
--Current logged in user is: request.user
-    -if request.user == user.non-staff AND if Recipe.Author == request.user
-        -let them edit that recipe
-    -Else:
-        -show msg: You cannot edit that recipe
-
--If request.user == user.is_staff
-    - let the request.user edit any recipe
